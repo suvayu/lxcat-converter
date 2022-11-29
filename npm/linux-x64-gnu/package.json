@@ -1,0 +1,27 @@
+{
+  "name": "@suvayu/converter",
+  "version": "0.1.0",
+  "description": "Convert LXCat JSON documents to legacy LXCat documents",
+  "os": ["linux"],
+  "cpu": ["x64"],
+  "libc": ["glibc"],
+  "main": "converter.linux-x64-gnu.node",
+  "files": [
+    "converter.linux-x64-gnu.node"
+  ],
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/",
+    "access": "public"
+  },
+  ""
+  "author": "Daan Boer",
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/suvayu/lxcat-converter.git"
+  },
+  "bugs": {
+    "url": "https://github.com/suvayu/lxcat-converter/issues"
+  },
+  "homepage": "https://github.com/suvayu/lxcat-converter#readme"
+}
