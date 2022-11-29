@@ -27,7 +27,7 @@ jobs:
             target: x86_64-apple-darwin
             build: |
               yarn build
-              strip -x *.node
+              strip -x @suvayu/*.node
           - host: windows-latest
             build: yarn build
             target: x86_64-pc-windows-msvc
@@ -51,7 +51,7 @@ jobs:
               SYSROOT=$(xcrun --sdk macosx --show-sdk-path);
               export CFLAGS="-isysroot $SYSROOT -isystem $SYSROOT";
               yarn build --target aarch64-apple-darwin
-              strip -x *.node
+              strip -x @suvayu/*.node
     name: stable - ${{ matrix.settings.target }} - node@16
     runs-on: ${{ matrix.settings.host }}
     steps:
@@ -160,7 +160,7 @@ jobs:
             freebsd-version
             yarn install
             yarn build
-            strip -x *.node
+            strip -x @suvayu/*.node
             yarn test
             rm -rf node_modules
             rm -rf target
@@ -184,6 +184,7 @@ jobs:
           - '16'
           - '18'
     runs-on: ${{ matrix.settings.host }}
+    continue-on-error: true
     steps:
       - uses: actions/checkout@v3
       - name: Setup node
@@ -220,6 +221,7 @@ jobs:
           - '16'
           - '18'
     runs-on: ubuntu-latest
+    continue-on-error: true
     steps:
       - uses: actions/checkout@v3
       - name: Setup node
@@ -256,6 +258,7 @@ jobs:
           - '16'
           - '18'
     runs-on: ubuntu-latest
+    continue-on-error: true
     steps:
       - uses: actions/checkout@v3
       - name: Setup node
@@ -321,15 +324,15 @@ jobs:
         run: |
           if git log -1 --pretty=%B | grep "^[0-9]\+\.[0-9]\+\.[0-9]\+$";
           then
-            echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" >> ~/.npmrc
+            echo "//registry.npmjs.org/:_authToken=$NPMJS_TOKEN" >> ~/.npmrc
             npm publish --access public
           elif git log -1 --pretty=%B | grep "^[0-9]\+\.[0-9]\+\.[0-9]\+";
           then
-            echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" >> ~/.npmrc
+            echo "//registry.npmjs.org/:_authToken=$NPMJS_TOKEN" >> ~/.npmrc
             npm publish --tag next --access public
           else
             echo "Not a release, skipping publish"
           fi
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+          NPMJS_TOKEN: ${{ secrets.NPMJS_TOKEN }}
