@@ -1,7 +1,7 @@
 name: CI
 env:
   DEBUG: napi:*
-  APP_NAME: @suvayu/converter
+  APP_NAME: '@suvayu/converter'
   MACOSX_DEPLOYMENT_TARGET: '10.13'
 'on':
   push:
