@@ -1,7 +1,7 @@
 name: CI
 env:
   DEBUG: napi:*
-  APP_NAME: package-template
+  APP_NAME: @suvayu/converter
   MACOSX_DEPLOYMENT_TARGET: '10.13'
 'on':
   push:
@@ -37,11 +37,11 @@ jobs:
             build: |-
               set -e &&
               yarn build --target x86_64-unknown-linux-gnu &&
-              strip *.node
+              strip @suvayu/*.node
           - host: ubuntu-latest
             target: x86_64-unknown-linux-musl
             docker: ghcr.io/napi-rs/napi-rs/nodejs-rust:lts-alpine
-            build: set -e && yarn build && strip *.node
+            build: set -e && yarn build && strip @suvayu/*.node
           - host: macos-latest
             target: aarch64-apple-darwin
             build: |
