@@ -2,10 +2,10 @@
   "name": "@suvayu/converter",
   "version": "0.1.0",
   "description": "Convert LXCat JSON documents to legacy LXCat documents",
-  "main": "dist/index.node",
-  "types": "dist/index.d.ts",
+  "main": "index.js",
+  "types": "@suvayu/index.d.ts",
   "files": [
-    "dist"
+    "@suvayu"
   ],
   "publishConfig": {
     "access": "public"
@@ -27,7 +27,7 @@
     "build:debug": "napi build --dts @suvayu/index.d.ts",
     "test": "node --loader ts-node/esm --test tests/valid.test.ts",
     "addheader": "reuse addheader --license=Apache-2.0 --copyright='LXCat team' -r --skip-existing --exclude-year --skip-unrecognised src tests",
-    "clean": "rm rf target dist",
+    "clean": "rm -rf target @suvayu",
     "prepublishOnly": "npm run build"
   },
   "author": "Daan Boer",

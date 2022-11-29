@@ -1,7 +1,7 @@
 name: CI
 env:
   DEBUG: napi:*
-  APP_NAME: '@suvayu/converter'
+  APP_NAME: 'converter'
   MACOSX_DEPLOYMENT_TARGET: '10.13'
 'on':
   push:
@@ -119,7 +119,7 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: bindings-${{ matrix.settings.target }}
-          path: ${{ env.APP_NAME }}.*.node
+          path: @suvayu/${{ env.APP_NAME }}.*.node
           if-no-files-found: error
   # build-freebsd:
   #   runs-on: macos-12
@@ -168,7 +168,7 @@ jobs:
   #       uses: actions/upload-artifact@v3
   #       with:
   #         name: bindings-freebsd
-  #         path: ${{ env.APP_NAME }}.*.node
+  #         path: @suvayu/${{ env.APP_NAME }}.*.node
   #         if-no-files-found: error
   # test-macOS-windows-binding:
   #   name: Test bindings on ${{ matrix.settings.target }} - node@${{ matrix.node }}
@@ -315,10 +315,13 @@ jobs:
         uses: actions/download-artifact@v3
         with:
           path: artifacts
+      - name: List packages
+        run: find ./artifacts
+        shell: bash
       - name: Move artifacts
         run: yarn artifacts
       - name: List packages
-        run: ls -R ./npm
+        run: find ./npm
         shell: bash
       - name: Publish
         run: |
