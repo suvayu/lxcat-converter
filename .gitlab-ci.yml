@@ -21,13 +21,11 @@ build-binaries:
       - .npm/
       - .cargo/
   script:
-    - '[ -f /etc/alpine-release ] && apk --no-cache add libc6-compat git rust cargo'
-    - |
-      [ -f /etc/alpine-release ] || \
-        curl https://sh.rustup.rs -sSf | sh -s -- --default-toolchain stable -y
-    - '[ -f /etc/alpine-release ] || source "$HOME/.cargo/env"'
-    - npm ci --cache .npm --prefer-offline
+    - '[ -f /etc/alpine-release ] && apk --no-cache add libc6-compat curl gcc'
+    - curl https://sh.rustup.rs -sSf | sh -s -- --default-toolchain stable -y
+    - source "$HOME/.cargo/env"
     - rustc --version
+    - npm ci --cache .npm --prefer-offline
     - npm run build -- --target $TARGET
     - mv @suvayu/converter.$PLATFORM.node npm/$PLATFORM/
   artifacts:
