@@ -45,8 +45,8 @@ publish:
       for p in linux-x64-{gnu,musl};
       do
           pushd npm/$p && {
-                npm publish --tag testing --access public
+                npm --userconfig=../../.npmrc publish --tag testing --access public
                 popd
             }
       done
-    - npm publish --tag testing --access public
+    - npm --userconfig=.npmrc publish --tag testing --access public
