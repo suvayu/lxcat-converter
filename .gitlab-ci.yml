@@ -9,9 +9,9 @@ build-binaries:
       - IMAGE: node:lts-bullseye
         TARGET: x86_64-unknown-linux-gnu
         PLATFORM: linux-x64-gnu
-      - IMAGE: node:lts-alpine
-        TARGET: x86_64-unknown-linux-musl
-        PLATFORM: linux-x64-musl
+      # - IMAGE: node:lts-alpine
+      #   TARGET: x86_64-unknown-linux-musl
+      #   PLATFORM: linux-x64-musl
   image: $IMAGE
   cache:
     key:
@@ -37,7 +37,7 @@ publish:
   image: node:lts-bullseye
   dependencies:
     - "build-binaries: [node:lts-bullseye, x86_64-unknown-linux-gnu, linux-x64-gnu]"
-    - "build-binaries: [node:lts-alpine, x86_64-unknown-linux-musl, linux-x64-musl]"
+    # - "build-binaries: [node:lts-alpine, x86_64-unknown-linux-musl, linux-x64-musl]"
   rules:
     - if: $CI_GIT_COMMIT_TAG
   script:
