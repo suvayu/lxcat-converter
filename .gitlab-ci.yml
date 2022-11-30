@@ -19,7 +19,6 @@ build-binaries:
         - package-lock.json
     paths:
       - .npm/
-      - .cargo/
   script:
     - '[ -f /etc/alpine-release ] && apk --no-cache add libc6-compat curl gcc'
     - curl https://sh.rustup.rs -sSf | sh -s -- --default-toolchain stable -y
