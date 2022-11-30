@@ -27,6 +27,7 @@ build-binaries:
         curl https://sh.rustup.rs -sSf | sh -s -- --default-toolchain stable -y
     - '[ -f /etc/alpine-release ] || source "$HOME/.cargo/env"'
     - npm ci --cache .npm --prefer-offline
+    - rustc --version
     - npm run build -- --target $TARGET
     - mv @suvayu/converter.$PLATFORM.node npm/$PLATFORM/
   artifacts:
