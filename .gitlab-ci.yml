@@ -38,7 +38,7 @@ publish:
     - "build-binaries: [node:lts-bullseye, x86_64-unknown-linux-gnu, linux-x64-gnu]"
     # - "build-binaries: [node:lts-alpine, x86_64-unknown-linux-musl, linux-x64-musl]"
   rules:
-    - if: $CI_GIT_COMMIT_TAG
+    - if: $CI_COMMIT_TAG
   script:
     - echo "//registry.npmjs.org/:_authToken=$NPMJS_TOKEN" >> ~/.npmrc
     - |
