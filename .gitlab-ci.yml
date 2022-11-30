@@ -21,10 +21,7 @@ build-binaries:
       - .npm/
       - .cargo/
   script:
-    - ls /etc/*release
-    - head /etc/*release
-    - '[ -f /etc/alpine-release ] && apk --no-cache add curl'
-    - curl https://sh.rustup.rs -sSf | sh -s -- --default-toolchain stable -y
+    - '[ -f /etc/alpine-release ] && apk --no-cache add libc6-compat git rust cargo'
     - source "$HOME/.cargo/env"
     - npm ci --cache .npm --prefer-offline
     - npm run build -- --target $TARGET
