@@ -23,7 +23,7 @@ build-binaries:
   script:
     - ls /etc/*release
     - head /etc/*release
-    - '[ -f /etc/os-release ] && grep -qi alpine && apk --no-cache add curl'
+    - '[ -f /etc/alpine-release ] && apk --no-cache add curl'
     - curl https://sh.rustup.rs -sSf | sh -s -- --default-toolchain stable -y
     - source "$HOME/.cargo/env"
     - npm ci --cache .npm --prefer-offline
