@@ -22,7 +22,6 @@ build-binaries:
       - .cargo/
   script:
     - '[ -f /etc/alpine-release ] && apk --no-cache add libc6-compat git rust cargo'
-    - source "$HOME/.cargo/env"
     - npm ci --cache .npm --prefer-offline
     - npm run build -- --target $TARGET
     - mv @suvayu/converter.$PLATFORM.node npm/$PLATFORM/
