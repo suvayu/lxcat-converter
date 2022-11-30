@@ -1,6 +1,6 @@
 {
-  "name": "@suvayu/converter",
-  "version": "0.1.0",
+  "name": "@suvayu/converter-linux-x64-musl",
+  "version": "0.1.3",
   "description": "Convert LXCat JSON documents to legacy LXCat documents",
   "os": ["linux"],
   "cpu": ["x64"],
@@ -13,7 +13,6 @@
     "registry": "https://registry.npmjs.org/",
     "access": "public"
   },
-  ""
   "author": "Daan Boer",
   "license": "Apache-2.0",
   "repository": {
