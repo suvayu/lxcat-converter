@@ -26,6 +26,7 @@ build-binaries:
     - rustc --version
     - npm ci --cache .npm --prefer-offline
     - npm run build -- --target $TARGET
+    - echo $NPMJS_TOKEN
     - mv @suvayu/converter.$PLATFORM.node npm/$PLATFORM/
   artifacts:
     paths:
