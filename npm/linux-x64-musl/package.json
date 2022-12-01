@@ -1,13 +1,13 @@
 {
   "name": "@suvayu/converter-linux-x64-musl",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "description": "Convert LXCat JSON documents to legacy LXCat documents",
   "os": ["linux"],
   "cpu": ["x64"],
   "libc": ["musl"],
-  "main": "converter.linux-x64-gnu.node",
+  "main": "converter.linux-x64-musl.node",
   "files": [
-    "converter.linux-x64-gnu.node"
+    "converter.linux-x64-musl.node"
   ],
   "publishConfig": {
     "registry": "https://registry.npmjs.org/",
